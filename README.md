@@ -9,6 +9,8 @@ It provides simple cli tools devised to support migrations or email imports to a
 
 It uses the [Groups Migration API](https://developers.google.com/admin-sdk/groups-migration/index), a `Google Developers Console project` with the `Google Groups service` enabled will be needed. For more information review the [prerequisites](https://developers.google.com/admin-sdk/groups-migration/v1/guides/prerequisites).
 
+The first execution will start an [OAuth2 Google Authentication Flow](https://developers.google.com/identity/protocols/oauth2) to initialize and store your grants.
+
 Highly inspired by https://gist.github.com/pecigonzalo/c147e3f174fca90bec66efbd9eb24ad3.
 
 ## Install
