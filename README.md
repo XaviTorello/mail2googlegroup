@@ -32,13 +32,22 @@ Errors are logged to stdout and embeded into `error.mbox` file.
 ### Examples
 
 - Import everything from my IMAP server
-  `$ imap2gg example@googlegroups.com myimapserver.com example@myimapserver.com aPassword --client_id=11111111-asjdhasjdkhasdjkhasjkh12.apps.googleusercontent.com --client_secret=4JHsadhj23jhasdj`
+
+```
+$ imap2gg example@googlegroups.com myimapserver.com example@myimapserver.com aPassword --client_id=11111111-asjdhasjdkhasdjkhasjkh12.apps.googleusercontent.com --client_secret=4JHsadhj23jhasdj
+```
 
 - Import everything from a gmail account
-  `$ imap2gg another@googlegroups.com imap.gmail.com example@gmail.com aPassword --client_id=11111111-asjdhasjdkhasdjkhasjkh12.apps.googleusercontent.com --client_secret=4JHsadhj23jhasdj`
+
+```
+$ imap2gg another@googlegroups.com imap.gmail.com example@gmail.com aPassword --client_id=11111111-asjdhasjdkhasdjkhasjkh12.apps.googleusercontent.com --client_secret=4JHsadhj23jhasdj
+```
 
 - Import just unseen emails:
-  `\$ imap2gg another@googlegroups.com imap.gmail.com example@gmail.com aPassword --query='UNSEEN'
+
+```
+$ imap2gg another@googlegroups.com imap.gmail.com example@gmail.com aPassword --query='UNSEEN'
+```
 
 ## mbox2gg
 
@@ -59,4 +68,7 @@ Errors are logged to stdout and embeded into `error.mbox` file.
 ### Examples
 
 - Import everything from mailbox.mbox to example@googlegroups.com
-  `$ mbox2gg example@googlegroups.com mailbox.mbox --client_id=11111111-asjdhasjdkhasdjkhasjkh12.apps.googleusercontent.com --client_secret=4JHsadhj23jhasdj`
+
+```
+$ mbox2gg example@googlegroups.com mailbox.mbox --client_id=11111111-asjdhasjdkhasdjkhasjkh12.apps.googleusercontent.com --client_secret=4JHsadhj23jhasdj
+```
