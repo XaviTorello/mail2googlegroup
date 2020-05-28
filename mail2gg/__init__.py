@@ -13,6 +13,10 @@ from tqdm import tqdm
 
 
 class BaseImporter:
+    """
+    Base definition of an importer that points to Google Group
+    """
+
     def __init__(self, group_id, *args, **kwargs):
         self.group_id = group_id
 
@@ -40,6 +44,7 @@ class BaseImporter:
         self.query = kwargs.get('query', 'ALL')
         # self.query = Q(seen=False)
 
+        # Create the error mbox
         self.error_mbox = mailbox.mbox('errors.mbox')
 
     def push_to_group(self, msg_string):
@@ -67,10 +72,16 @@ class BaseImporter:
     def show_errors(self):
         for an_email in self.error_mbox:
             print(
-                f"Error processing {an_email.get('Message-ID')} '{an_email.get('Subject')}'")
+                f"Error processing {an_email.get('Message-ID')}",
+                f"'{an_email.get('Subject')}'",
+            )
 
 
 class ImapImporter(BaseImporter):
+    """
+    Import from an IMAP server to a Google Group
+    """
+
     def __init__(self, group_id, server, email, password, *args, **kwargs):
         super().__init__(group_id,  *args, **kwargs)
         self.server = server
@@ -80,7 +91,8 @@ class ImapImporter(BaseImporter):
 
     def count_elements(self, remote_mailbox):
         """
-        Perform a request to the IMAP server to get all emails instead of inspect the generator
+        Perform a request to the IMAP server to get all emails instead of 
+        inspect the generator
         """
         charset = 'utf-8'
         _, ids = remote_mailbox.box.search(
@@ -89,9 +101,13 @@ class ImapImporter(BaseImporter):
         return len(ids[0].split())
 
     def process(self):
+        """
+        Try to connect to the IMAP server, and try process all matched emails
+        """
         try:
-            with MailBox(self.server).login(self.email, self.password) as remote_mailbox:
-
+            with MailBox(self.server).login(
+                self.email, self.password
+            ) as remote_mailbox:
                 count = self.count_elements(remote_mailbox)
                 if (count == 0):
                     print(
@@ -118,14 +134,21 @@ class ImapImporter(BaseImporter):
 
 
 class MboxImporter(BaseImporter):
+    """
+    Import from a mbox file to a Google Group
+    """
+
     def __init__(self, group_id, mbox, *args, **kwargs):
         super().__init__(group_id,  *args, **kwargs)
-        # Validate if file exists
+        # TODO Validate if file exists
         self.incoming_mbox = mailbox.mbox(mbox)
         self.process()
 
     def process(self):
-        for an_email in tqdm(self.incoming_mbox):
+        for an_email in tqdm(
+            self.incoming_mbox,
+            desc='Processing emails',
+        ):
             try:
                 an_email_str = an_email.as_string().encode('utf-8')
                 self.push_to_group(an_email_str)
