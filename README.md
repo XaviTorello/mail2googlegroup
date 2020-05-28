@@ -9,7 +9,7 @@ It provides simple cli tools devised to support migrations or email imports to a
 
 It uses the [Groups Migration API](https://developers.google.com/admin-sdk/groups-migration/index), a `Google Developers Console project` with the `Google Groups service` enabled will be needed. For more information review the [prerequisites](https://developers.google.com/admin-sdk/groups-migration/v1/guides/prerequisites).
 
-Highly inspired by https://gist.github.com/pecigonzalo/c147e3f174fca90bec66efbd9eb24ad3,
+Highly inspired by https://gist.github.com/pecigonzalo/c147e3f174fca90bec66efbd9eb24ad3.
 
 ## imap2gg
 
