@@ -1,5 +1,6 @@
 # Inspired and adapted from https://gist.github.com/pecigonzalo/c147e3f174fca90bec66efbd9eb24ad3
 
+import argparse
 import mailbox
 import io
 import apiclient
@@ -37,7 +38,13 @@ class BaseImporter:
             flow = client.OAuth2WebServerFlow(
                 self.client_id, self.client_secret, scope
             )
-            credentials = tools.run(flow, storage)
+
+            parser = argparse.ArgumentParser(
+                description=__doc__,
+                formatter_class=argparse.RawDescriptionHelpFormatter,
+                parents=[tools.argparser])
+            flags, unknown = parser.parse_known_args()
+            credentials = tools.run_flow(flow, storage, flags)
 
         http = credentials.authorize(httplib2.Http())
         self.service = discovery.build('groupsmigration', 'v1', http=http)
