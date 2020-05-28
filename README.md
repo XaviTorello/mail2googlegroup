@@ -11,6 +11,14 @@ It uses the [Groups Migration API](https://developers.google.com/admin-sdk/group
 
 Highly inspired by https://gist.github.com/pecigonzalo/c147e3f174fca90bec66efbd9eb24ad3.
 
+## Install
+
+Just use pip to install it!
+
+```
+pip install mail2gg
+```
+
 ## imap2gg
 
 ```
