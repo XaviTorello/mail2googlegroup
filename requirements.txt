@@ -2,3 +2,5 @@ httplib2
 oauth2client
 imap-tools
 google-api-python-client
+fire
+tqdm
