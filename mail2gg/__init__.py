@@ -34,7 +34,9 @@ class BaseImporter:
             if not self.client_secret:
                 self.client_secret = input('Enter client_secret: ')
 
-            flow = client.OAuth2WebServerFlow(client_id, client_secret, scope)
+            flow = client.OAuth2WebServerFlow(
+                self.client_id, self.client_secret, scope
+            )
             credentials = tools.run(flow, storage)
 
         http = credentials.authorize(httplib2.Http())
