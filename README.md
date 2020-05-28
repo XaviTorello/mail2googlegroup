@@ -29,6 +29,8 @@ Default query is 'ALL'. Examples: 'SEEN', 'UNSEEN'. See https://github.com/ikvk/
 
 Errors are logged to stdout and embeded into `error.mbox` file.
 
+For more info run `$ imap2gg --help`
+
 ### Examples
 
 - Import everything from my IMAP server
@@ -64,6 +66,8 @@ Import an mbox file to a Google Group
 `client_id` and `client_secret` are just needed the first time. The authorization file `.credentials` will be created and reused
 
 Errors are logged to stdout and embeded into `error.mbox` file.
+
+For more info run `$ mbox2gg --help`
 
 ### Examples
 
