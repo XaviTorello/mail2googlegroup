@@ -16,7 +16,7 @@ with open(path.join(here, 'requirements.txt')) as requirements_txt:
 
 setup(
     name='mail2gg',
-    version='0.1.2',
+    version='0.1.3',
     packages=find_packages(),
     description='Import mail to Google Groups using an IMAP account or mbox file',
     long_description=long_description,
