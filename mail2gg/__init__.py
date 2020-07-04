@@ -9,7 +9,7 @@ from apiclient import discovery
 from oauth2client import client, tools
 from oauth2client.file import Storage
 
-from imap_tools import MailBox, Q
+from imap_tools import MailBox
 from tqdm import tqdm
 
 
