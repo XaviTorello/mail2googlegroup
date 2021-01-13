@@ -1,6 +1,6 @@
 httplib2
 oauth2client
-imap-tools
+imap-tools==0.30.0
 google-api-python-client
 fire
 tqdm
