@@ -98,16 +98,15 @@ class ImapImporter(BaseImporter):
         self.password = password
         self.process()
 
-    def count_elements(self, remote_mailbox):
+    def count_elements(self, remote_mailbox: MailBox) -> int:
         """
-        Perform a request to the IMAP server to get all emails instead of 
+        Perform a request to the IMAP server to get all emails instead of
         inspect the generator
         """
-        charset = 'utf-8'
-        _, ids = remote_mailbox.box.search(
-            charset, remote_mailbox._criteria_encoder(self.query, charset)
-        )
-        return len(ids[0].split())
+        status = remote_mailbox.folder.status()
+        if "MESSAGES" not in status:
+            raise AttributeError("Missing 'MESSAGES' in Mailbox folder status call.")
+        return status.get('MESSAGES', 0)
 
     def process(self):
         """
